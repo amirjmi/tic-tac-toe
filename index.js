@@ -54,7 +54,7 @@ function checkGameOver(){
     winningPositions.forEach((position) => {
         // All 3 boxes should be non-empty and same in value
         if( (gameGrid[position[0]] !== "" || gameGrid[position[1]] !== "" || gameGrid[position[2]] !== "")
-        && (gameGrid[position[0]] === gameGrid[position[1]]) && (ameGrid[position[1]] === gameGrid[position[2]]) ) {
+        && (gameGrid[position[0]] === gameGrid[position[1]]) && (gameGrid[position[1]] === gameGrid[position[2]]) ) {
         
             // Check if winner is X
             if(gameGrid[position[0]] === "X")
@@ -83,11 +83,13 @@ function checkGameOver(){
         newGameBtn.classList.add("active");
         return;
     }
-
+    
     // Let's check whether there is tie
     let fillCount = 0;
     gameGrid.forEach((box) => {
-        fillCount++;
+        if(box !== ""){
+            fillCount++;
+        }
     });
 
     // Board is filled,game is tie
